@@ -142,7 +142,82 @@ const Portfolio = () => {
         <div className="absolute top-10 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       </section>
 
-      {/* Projects Section - Content continues... */}
+      {/* Projects Section */}
+      <section id="projects" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              My <span className="text-blue-400">Projects</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-4"></div>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Showcasing my journey in building meaningful solutions</p>
+          </div>
+
+          <div className="space-y-12">
+            {portfolioData.projects.map((project) => (
+              <div key={project.id} className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group">
+                <div className="grid md:grid-cols-2 gap-0">
+                  <div className="relative h-64 md:h-auto overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-emerald-600/20 group-hover:opacity-0 transition-opacity duration-300"></div>
+                  </div>
+
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                      <p className="text-emerald-400 font-medium">{project.subtitle}</p>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed">{project.description}</p>
+
+                    <div>
+                      <h4 className="text-white font-semibold mb-3">Key Features:</h4>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, fidx) => (
+                          <li key={fidx} className="flex items-start gap-2 text-gray-400">
+                            <ChevronRight className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, tidx) => (
+                        <span key={tidx} className="px-3 py-1 bg-blue-500/10 text-blue-300 rounded-full text-sm border border-blue-500/30">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-4 pt-2">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium shadow transition-all duration-300 hover:scale-105"
+                      >
+                        <Github className="h-4 w-4" />
+                        View Code
+                      </a>
+                      <button className="inline-flex items-center gap-2 border border-blue-500 text-blue-400 hover:bg-blue-500/10 px-4 py-2 rounded-md text-sm font-medium transition-all duration-300">
+                        <ExternalLink className="h-4 w-4" />
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+      </section>
+
+      {/* Skills, Education, and Contact sections continue... */}
     </div>
   );
 };

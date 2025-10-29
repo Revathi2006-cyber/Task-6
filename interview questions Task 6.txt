@@ -1,0 +1,111 @@
+1️. What is a template in Flask?
+
+A template in Flask is an HTML file that contains dynamic placeholders using Jinja2 syntax. Flask fills those placeholders with actual data before sending the page to the browser.
+
+2️.What’s Jinja2?
+
+Jinja2 is a templating engine used by Flask.
+It allows writing dynamic HTML using:
+
+Variables → {{ variable }}
+
+Conditions → {% if %} ... {% endif %}
+
+Loops → {% for item in list %} ... {% endfor %}
+
+3️.How do you pass data to a template?
+
+Use render_template() and pass variables like key-value pairs:
+
+return render_template("index.html", name="Revathi", age=21)
+
+
+In index.html:
+
+<p>{{ name }} is {{ age }} years old.</p>
+
+4️.How are forms handled in Flask?
+
+Define a route that supports GET + POST
+
+Fetch form values using request.form
+
+Example:
+
+from flask import request
+
+@app.route("/submit", methods=["GET", "POST"])
+def submit():
+    if request.method == "POST":
+        name = request.form["name"]
+        return f"Hello {name}"
+    return render_template("form.html")
+
+5️.What is render_template()?
+
+A Flask function used to
+
+Load an HTML template from the templates folder
+
+Insert dynamic data into it
+
+Return the final HTML to the browser
+
+Example:
+
+return render_template("home.html")
+
+6️.How to style your app?
+
+By linking CSS files stored in the static folder:
+
+📂 Project Structure:
+
+static/
+    style.css
+templates/
+    index.html
+
+
+HTML:
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+7️.POST vs GET method in forms?
+Feature	GET	POST
+Visibility	Data shown in URL	Data hidden in body
+Usage	Search, navigation	Login, sensitive forms
+Data Length	Limited	Not limited
+Security	Less secure	More secure
+8️.What are static files?
+
+Files that do not change dynamically, like:
+
+CSS
+
+JavaScript
+
+Images
+
+Stored in the static/ folder and served directly by Flask.
+
+9️.How is routing done in Flask?
+
+Using the @app.route() decorator to map URLs to Python functions.
+
+Example:
+
+@app.route("/")
+def home():
+    return "Hello Flask!"
+
+10.Can Flask serve HTML/CSS/JS?
+
+Yes 
+Flask can serve:
+
+HTML via templates/
+
+CSS & JS via static/
+
+Even API responses via JSON
